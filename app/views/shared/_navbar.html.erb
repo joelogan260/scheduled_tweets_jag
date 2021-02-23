@@ -9,20 +9,42 @@
         <li class="nav-item">
           <%= link_to "Home", root_path, class: "nav-link" %>
         </li>
+        
         <li class="nav-item">
           <%= link_to "About", about_path, class: "nav-link" %>
         </li>
         
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown link
+            Twitter tools
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li>
+              <%= link_to "Tweets", tweets_path, class:"dropdown-item" %>
+            </li>
+            <li>
+              <%= link_to "Twitter Accounts", twitter_accounts_path, class: "dropdown-item" %>
+            </li>
           </ul>
         </li>
+      </ul>
+
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 ">
+        <% if Current.user %>
+          <li class="nav-item">
+            <%= link_to Current.user.email, password_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= button_to "Logout", logout_path, method: :delete, class: "btn btn-outline-secondary" %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to "Sign Up", sign_up_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Login", sign_in_path, class: "nav-link" %>
+          </li>
+        <% end %>
       </ul>
     </div>
   </div>
